@@ -1,5 +1,8 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+  <jsp:include page="/menu.jsp"></jsp:include>
+  <div>
+    <B>Aplicatie hotel</B>
+  </div>
 </body>
 </html>
