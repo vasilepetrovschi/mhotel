@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 
 import mhotel.model.Customer;
@@ -84,8 +85,32 @@ public class HotelDAO implements BaseDAOInterface<Hotel> {
 
 	@Override
 	public List<Hotel> listAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement stmt = null;
+		ResultSet rset = null;
+		List<Hotel> resultList = new ArrayList<>();
+		try {
+			stmt = mConnection.prepareStatement("SELECT ID,NAME,RATING, ADDRESS_ID FROM  HOTEL.HOTEL");
+			rset = stmt.executeQuery();
+			while (rset.next()) {
+				Hotel hotel = new Hotel();
+				hotel.setId(rset.getLong(1));
+				hotel.setName(rset.getString(2));
+				hotel.setRating(rset.getInt(3));
+				hotel.setAddress(mAddressDAO.loadById(rset.getLong(4)));
+				hotel.setRooms(mRoomDAO.findRoomsForHotel(hotel));
+				resultList.add(hotel);
+			
+			}
+			return resultList;
+		} finally {
+			if (rset != null) {
+				rset.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+
 	}
 
 	@Override
@@ -96,8 +121,7 @@ public class HotelDAO implements BaseDAOInterface<Hotel> {
 			throw new RuntimeException("loadById - NULL pID");
 		}
 		try {
-			stmt = mConnection.prepareStatement(
-					"SELECT ID,NAME,RATING, ADDRESS_ID FROM  HOTEL.HOTEL WHERE ID=?");
+			stmt = mConnection.prepareStatement("SELECT ID,NAME,RATING, ADDRESS_ID FROM  HOTEL.HOTEL WHERE ID=?");
 			stmt.setLong(1, pId);
 			rset = stmt.executeQuery();
 			if (rset.next()) {
