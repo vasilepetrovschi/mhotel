@@ -35,6 +35,9 @@
 	       <td>
 	      	<%= customer.getAddress().getCity() %>
 	      </td>
+	      <td>
+	        <a href='<%= request.getContextPath() + "/hotel/checkin?customer_id=" + customer.getId() %>'>Check In</a>
+	      </td>
 	    </tr>
 	    
 	    <%

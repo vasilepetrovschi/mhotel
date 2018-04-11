@@ -9,7 +9,8 @@
 <body>
 	<div width="100%">
 	  <a href="customer/list">Clienti</a>&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="hotel/list">Hoteluri</a>
+	  <a href="hotel/list">Hoteluri</a>&nbsp;&nbsp;&nbsp;&nbsp;
+	  <a href="hotel/checkout">Check out</a>
 	  
 	</div>
 </body>

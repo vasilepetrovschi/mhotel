@@ -824,4 +824,34 @@ standard deployment descriptor.
     <servlet-name>RoomAddServlet</servlet-name>
     <url-pattern>/room/add</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HotelCheckinController</display-name>
+    <servlet-name>HotelCheckinController</servlet-name>
+    <servlet-class>hotel.controllers.HotelCheckinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HotelCheckinController</servlet-name>
+    <url-pattern>/hotel/checkin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CheckinController</display-name>
+    <servlet-name>CheckinController</servlet-name>
+    <servlet-class>hotel.controllers.CheckinController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckinController</servlet-name>
+    <url-pattern>/checkin</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HotelCheckoutController</display-name>
+    <servlet-name>HotelCheckoutController</servlet-name>
+    <servlet-class>hotel.controllers.HotelCheckoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HotelCheckoutController</servlet-name>
+    <url-pattern>/hotel/checkout</url-pattern>
+  </servlet-mapping>
 </web-app>
