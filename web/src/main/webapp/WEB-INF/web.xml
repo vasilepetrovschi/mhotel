@@ -804,4 +804,24 @@ standard deployment descriptor.
     <servlet-name>HotelListController</servlet-name>
     <url-pattern>/hotel/list</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HotelAddServlet</display-name>
+    <servlet-name>HotelAddServlet</servlet-name>
+    <servlet-class>hotel.controllers.HotelAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HotelAddServlet</servlet-name>
+    <url-pattern>/hotel/add</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RoomAddServlet</display-name>
+    <servlet-name>RoomAddServlet</servlet-name>
+    <servlet-class>hotel.controllers.RoomAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomAddServlet</servlet-name>
+    <url-pattern>/room/add</url-pattern>
+  </servlet-mapping>
 </web-app>
