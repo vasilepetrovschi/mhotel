@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import mhotel.model.Address;
@@ -113,6 +114,20 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 		}
 	}
 
+	public void checkout(long pId, Date pCheckoutDate) throws SQLException {
+		PreparedStatement stmt = null;
+		try {
+			stmt = mConnection.prepareStatement("UPDATE HOTEL.CUSTOMER_RECORD SET CHECKED_OUT=? WHERE ID=?");
+			stmt.setDate(1, new java.sql.Date(pCheckoutDate.getTime()));
+			stmt.setLong(2, pId);
+			int rc = stmt.executeUpdate();
+		} finally {
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
+
 	@Override
 	public List<CustomerRecord> listAll() throws SQLException {
 		// TODO Auto-generated method stub
@@ -199,7 +214,7 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 				CustomerRecord cr = new CustomerRecord();
 				cr.setId(rset.getLong(1));
 				cr.setCustomer(mCustomerDAO.loadById(rset.getLong(2)));
-				cr.setRoom(mRoomDAO.loadById(rset.getLong(3)));
+				cr.setRoom(mRoomDAO.loadFullById(rset.getLong(3)));
 				cr.setCheckInDate(rset.getDate(4));
 				cr.setCheckOutDate(rset.getDate(5));
 				records.add(cr);

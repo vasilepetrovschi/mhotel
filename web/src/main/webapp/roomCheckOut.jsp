@@ -10,6 +10,9 @@
 </head>
 <body>
 <div>
+  <a href='<%= request.getContextPath() + "/"  %>'>HOME</a>
+</div>
+<div>
 		<%
 	    List<CustomerRecord> activeCheckins = (List<CustomerRecord>)request.getAttribute("records");
 		
@@ -27,9 +30,15 @@
 	  <%
 	    for(CustomerRecord cr : activeCheckins) {
 	  %>
-	  	<li>paturi:<%= cr.getRoom().getNumberOfBeds() %>,camera:
+	  	<li>
+	  	hotel: <%= cr.getRoom().getHotel().getName() %>,<%= cr.getRoom().getHotel().getAddress().getCity() %>
+	  	paturi:<%= cr.getRoom().getNumberOfBeds() %>,camera:
 	  	<%= cr.getRoom().getNumber() %>, etaj: <%= cr.getRoom().getFloor() %>,
-	  	client: <%= cr.getCustomer().getName() %>
+	  	client: <%= cr.getCustomer().getName() %><br>
+	  	<form action='<%= request.getContextPath() + "/checkout"  %>' method="post">
+	  	  <input type="hidden" name="cr_id" value="<%= cr.getId() %>">
+	  	  <button type="submit">CHECKOUT</button>
+	  	</form>
 	  <%
 	    }
 	  %>

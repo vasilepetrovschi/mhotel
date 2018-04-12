@@ -172,6 +172,42 @@ public class RoomDAO implements BaseDAOInterface<Room> {
 			}
 		}
 	}
+	
+	public Room loadFullById(Long pId) throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet rset = null;
+		if (pId == null) {
+			throw new RuntimeException("loadFullById - NULL pID");
+		}
+		try {
+			stmt = mConnection.prepareStatement(
+					"SELECT ID,FLOOR_NBR,ROOM_NBR,BED_NBR,AVAILABLE_FOR_RENT, HOTEL_ID FROM  HOTEL.ROOM WHERE ID=?");
+			stmt.setLong(1, pId);
+			rset = stmt.executeQuery();
+			if (rset.next()) {
+				Room room = new Room();
+				room.setId(rset.getLong(1));
+				room.setFloor(rset.getInt(2));
+				room.setNumber(rset.getString(3));
+				room.setNumberOfBeds(rset.getInt(4));
+				room.setAvailableForRent(rset.getBoolean(5));
+				room.setHotel(mHotelDAO.loadByIdNoRooms(rset.getLong(6)));
+
+				// cust.setAddress(mAddrDAO.loadById(rset.getLong(6)));
+				return room;
+			} else {
+				return null;
+			}
+
+		} finally {
+			if (rset != null) {
+				rset.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
+		}
+	}
 
 	public List<Room> listAllFree() throws SQLException {
 		PreparedStatement stmt = null;

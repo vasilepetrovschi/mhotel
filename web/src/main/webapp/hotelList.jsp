@@ -10,6 +10,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div>
+  <a href='<%= request.getContextPath() + "/"  %>'>HOME</a>
+</div>
+   Bine ai venit : <%= request.getUserPrincipal() %><BR>
+
   <B>Lista Hoteluri</B><br>
   <% List<Hotel> hotelList = (List<Hotel>)request.getAttribute("hotels"); %>
   <a  href='<%= request.getContextPath() + "/hotelAdd.jsp" %>'>Adaugare hotel</a>
