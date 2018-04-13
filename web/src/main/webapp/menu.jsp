@@ -11,7 +11,7 @@
 		if (request.getUserPrincipal() != null) {
 	%>
 	Bine ai venit :
-	<%=request.getUserPrincipal()%><BR>
+	<%=request.getUserPrincipal().getName() %><BR>
 	<a href='logout'>LOGOUT</a>
 	<%
 		}

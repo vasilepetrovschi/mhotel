@@ -2,9 +2,12 @@ package mhotel.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Address implements Serializable {
 	private Long mId;// PK
 	private String mStreet;
+	
 	private String mNumber;
 	private String mCity;
 	private String mCountry;
@@ -18,10 +21,13 @@ public class Address implements Serializable {
 		mStreet = pStreet;
 	}
 
+	@JsonProperty("street_number")
 	public String getNumber() {
 		return mNumber;
 	}
+	
 
+	@JsonProperty("street_number")
 	public void setNumber(String pNumber) {
 		mNumber = pNumber;
 	}
