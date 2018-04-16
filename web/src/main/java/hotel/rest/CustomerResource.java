@@ -1,9 +1,9 @@
 package hotel.rest;
 
-import java.sql.Connection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import javax.sql.DataSource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,77 +12,34 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
-import mhotel.DatasourceUtils;
-import mhotel.dao.CustomerDAO;
+import hotel.business.CustomerService;
 import mhotel.model.Customer;
 
 @Path("/customers")
 public class CustomerResource {
+	private static final Logger __logger = Logger.getLogger("hotel.rest.CustomerResource");
+
 	@GET
 	@Path("/all")
 	@Produces("application/json")
 	public List<Customer> getAllCustomers() throws Exception {
-		try {
-			DataSource ds = DatasourceUtils.getDataSource();
-			Connection connection = null;
-			List<Customer> customerList = null;
-			try {
-				connection = ds.getConnection();
-				CustomerDAO customerDAO = new CustomerDAO(connection);
-				customerList = customerDAO.listAll();
-				return customerList;
-			} finally {
-				if (connection != null) {
-					connection.close();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
+		if (__logger.isLoggable(Level.INFO))
+			__logger.log(Level.INFO, "getAllCustomers entered");
+		CustomerService cs = new CustomerService();
+		return cs.getAllCustomers();
 	}
 
 	@GET
 	@Path("/all/{cid}")
 	public Customer getCustomerById(@PathParam("cid") long pId) throws Exception {
-		try {
-			DataSource ds = DatasourceUtils.getDataSource();
-			Connection connection = null;
-			try {
-				connection = ds.getConnection();
-				CustomerDAO customerDAO = new CustomerDAO(connection);
-				return customerDAO.loadById(pId);
-			} finally {
-				if (connection != null) {
-					connection.close();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
+		return new CustomerService().getCustomerById(pId);
 	}
-	
+
 	@POST
 	@Path("/add")
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Customer addCustomer(Customer pCustomer) throws Exception {
-		try {
-			DataSource ds = DatasourceUtils.getDataSource();
-			Connection connection = null;
-			try {
-				connection = ds.getConnection();
-				CustomerDAO customerDAO = new CustomerDAO(connection);
-				return customerDAO.insert(pCustomer);
-			} finally {
-				if (connection != null) {
-					connection.close();
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw e;
-		}
+		return new CustomerService().addCustomer(pCustomer);
 	}
 }
