@@ -42,4 +42,8 @@ public class CustomerResource {
 	public Customer addCustomer(Customer pCustomer) throws Exception {
 		return new CustomerService().addCustomer(pCustomer);
 	}
+	
+	private void bau() {
+		System.out.println("Bau");
+	}
 }
