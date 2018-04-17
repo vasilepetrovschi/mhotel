@@ -2,8 +2,12 @@ package mhotel.model;
 
 import java.io.Serializable;
 
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@RequestScoped
 public class Address implements Serializable {
 	private Long mId;// PK
 	private String mStreet;
