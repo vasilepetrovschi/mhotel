@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import hotel.inj.ServiceIntf;
 import mhotel.model.Address;
 
 /**
@@ -19,7 +20,7 @@ public class FirstServletWithInjection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private Address mAddr;
+	private ServiceIntf mService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,7 +35,7 @@ public class FirstServletWithInjection extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("addr: ").append(mAddr.toString());
+		response.getWriter().append("addr: ").append(mService.doCeva());
 	}
 
 	

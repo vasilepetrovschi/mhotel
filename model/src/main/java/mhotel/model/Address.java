@@ -2,12 +2,9 @@ package mhotel.model;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@RequestScoped
 public class Address implements Serializable {
 	private Long mId;// PK
 	private String mStreet;
@@ -16,6 +13,12 @@ public class Address implements Serializable {
 	private String mCity;
 	private String mCountry;
 	private String mPostalCode;
+	
+	private double mRnd;
+	
+	public Address() {
+		mRnd = Math.random();
+	}
 
 	public String getStreet() {
 		return mStreet;
@@ -73,8 +76,10 @@ public class Address implements Serializable {
 	@Override
 	public String toString() {
 		return "Address [mId=" + mId + ", mStreet=" + mStreet + ", mNumber=" + mNumber + ", mCity=" + mCity
-				+ ", mCountry=" + mCountry + ", mPostalCode=" + mPostalCode + "]";
+				+ ", mCountry=" + mCountry + ", mPostalCode=" + mPostalCode + ", mRnd=" + mRnd + "]";
 	}
+
+	
 
 	
 }

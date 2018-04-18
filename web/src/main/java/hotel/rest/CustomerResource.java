@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+import javax.sql.DataSource;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +20,10 @@ import mhotel.model.Customer;
 @Path("/customers")
 public class CustomerResource {
 	private static final Logger __logger = Logger.getLogger("hotel.rest.CustomerResource");
+	
+	@Inject
+	private CustomerService mCustomerService;
+
 
 	@GET
 	@Path("/all")
@@ -25,14 +31,13 @@ public class CustomerResource {
 	public List<Customer> getAllCustomers() throws Exception {
 		if (__logger.isLoggable(Level.INFO))
 			__logger.log(Level.INFO, "getAllCustomers entered");
-		CustomerService cs = new CustomerService();
-		return cs.getAllCustomers();
+		return mCustomerService.getAllCustomers();
 	}
 
 	@GET
 	@Path("/all/{cid}")
 	public Customer getCustomerById(@PathParam("cid") long pId) throws Exception {
-		return new CustomerService().getCustomerById(pId);
+		return mCustomerService.getCustomerById(pId);
 	}
 
 	@POST
@@ -40,7 +45,7 @@ public class CustomerResource {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Customer addCustomer(Customer pCustomer) throws Exception {
-		return new CustomerService().addCustomer(pCustomer);
+		return mCustomerService.addCustomer(pCustomer);
 	}
 	
 	private void bau() {

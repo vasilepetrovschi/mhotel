@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +22,9 @@ import mhotel.model.Customer;
  */
 public class CustomerListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private CustomerService mCustomerService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -40,7 +44,7 @@ public class CustomerListController extends HttpServlet {
 		// forward la view - customerList.jsp
 		try {
 
-			List<Customer> customerList = new CustomerService().getAllCustomers();
+			List<Customer> customerList = mCustomerService.getAllCustomers();
 
 			RequestDispatcher rd = request.getRequestDispatcher("/customerList.jsp");
 			request.setAttribute("customers", customerList);

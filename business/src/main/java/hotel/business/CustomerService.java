@@ -5,26 +5,31 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerDAO;
 import mhotel.model.Customer;
 
+@ApplicationScoped
 public class CustomerService {
 	private static final Logger __logger = Logger.getLogger("hotel.business.CustomerService");
+
+	@Inject
+	private DataSource mDataSource;
 
 	public List<Customer> getAllCustomers() throws Exception {
 		if (__logger.isLoggable(Level.INFO))
 			__logger.log(Level.INFO, "getAllCustomers entered");
 		try {
-			DataSource ds = DatasourceUtils.getDataSource();
 			if (__logger.isLoggable(Level.FINE))
-				__logger.log(Level.FINE, "got datasource" + ds.toString());
+				__logger.log(Level.FINE, "got datasource" + mDataSource.toString());
 			Connection connection = null;
 			List<Customer> customerList = null;
 			try {
-				connection = ds.getConnection();
+				connection = mDataSource.getConnection();
 				CustomerDAO customerDAO = new CustomerDAO(connection);
 				customerList = customerDAO.listAll();
 				return customerList;
@@ -43,10 +48,9 @@ public class CustomerService {
 		if (__logger.isLoggable(Level.INFO))
 			__logger.log(Level.INFO, "getAllCustomers entered");
 		try {
-			DataSource ds = DatasourceUtils.getDataSource();
 			Connection connection = null;
 			try {
-				connection = ds.getConnection();
+				connection = mDataSource.getConnection();
 				CustomerDAO customerDAO = new CustomerDAO(connection);
 				return customerDAO.loadById(pId);
 			} finally {
@@ -62,10 +66,9 @@ public class CustomerService {
 
 	public Customer addCustomer(Customer pCustomer) throws Exception {
 		try {
-			DataSource ds = DatasourceUtils.getDataSource();
 			Connection connection = null;
 			try {
-				connection = ds.getConnection();
+				connection = mDataSource.getConnection();
 				CustomerDAO customerDAO = new CustomerDAO(connection);
 				return customerDAO.insert(pCustomer);
 			} finally {
