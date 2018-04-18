@@ -7,13 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href='logout'>LOGOUT</a>
 
 	<%
 		if (request.getUserPrincipal() != null) {
 	%>
 	Bine ai venit :
-	<%=request.getUserPrincipal().getName() %><BR>
+	<%=request.getUserPrincipal().getName()%>&nbsp;&nbsp;
+	<a href='logout'>LOGOUT</a>
+	<BR>
+
 	<%
 		}
 	%>
@@ -22,20 +24,21 @@
 		<%
 			if (request.isUserInRole("receptioner")) {
 		%>
+		<a href="customer/list">Clienti</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
 		<%
 			}
 		%>
-				<a href="customer/list">Clienti</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		
+
 		<%
 			if (request.isUserInRole("manager_hotel")) {
 		%>
-		
+		<a href="hotel/list">Hoteluri</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
+			href="hotel/checkout">Check out</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<%
 			}
 		%>
-		<a href="hotel/list">Hoteluri</a>&nbsp;&nbsp;&nbsp;&nbsp; <a
-			href="hotel/checkout">Check out</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
 		<a href="hotel/availableRooms">Raport camere libere</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="hotel/unavailableRooms">Raport camere ocupate</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
