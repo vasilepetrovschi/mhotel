@@ -1,8 +1,9 @@
 package hotel.inj;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-@RequestScoped
+@RequestScoped @Named(value="pufi")
 public class ServiceImpl1 implements ServiceIntf {
 
 	@Override

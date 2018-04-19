@@ -9,7 +9,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import hotel.inj.Logged;
 import mhotel.DatasourceUtils;
+import mhotel.H2DB;
 import mhotel.dao.CustomerDAO;
 import mhotel.model.Customer;
 
@@ -18,6 +20,7 @@ public class CustomerService {
 	private static final Logger __logger = Logger.getLogger("hotel.business.CustomerService");
 
 	@Inject
+	@H2DB
 	private DataSource mDataSource;
 
 	public List<Customer> getAllCustomers() throws Exception {

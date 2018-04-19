@@ -3,6 +3,7 @@ package hotel.controllers;
 import java.io.IOException;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import mhotel.model.Address;
 public class FirstServletWithInjection extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	@Inject @Named("pufi")
 	private ServiceIntf mService;
        
     /**

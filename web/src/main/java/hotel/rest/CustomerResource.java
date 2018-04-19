@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 import javax.ws.rs.Consumes;
@@ -15,9 +16,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 import hotel.business.CustomerService;
+import hotel.inj.Logged;
 import mhotel.model.Customer;
 
 @Path("/customers")
+@ApplicationScoped
 public class CustomerResource {
 	private static final Logger __logger = Logger.getLogger("hotel.rest.CustomerResource");
 	
@@ -28,6 +31,8 @@ public class CustomerResource {
 	@GET
 	@Path("/all")
 	@Produces("application/json")
+	@Logged
+
 	public List<Customer> getAllCustomers() throws Exception {
 		if (__logger.isLoggable(Level.INFO))
 			__logger.log(Level.INFO, "getAllCustomers entered");

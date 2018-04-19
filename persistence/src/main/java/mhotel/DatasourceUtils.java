@@ -15,10 +15,21 @@ public class DatasourceUtils {
 	
 	@ApplicationScoped
 	@Produces
+	@H2DB
 	public DataSource getInjectedDataSourceH2() throws NamingException {
 		__logger.info("Inside DataSource producer");
 		Context ctx = new InitialContext();
 		return (DataSource) ctx.lookup("java:/comp/env/jdbc/HotelDB");
+	}
+	
+	
+	@ApplicationScoped
+	@Produces
+	@OracleDB
+	public DataSource getInjectedDataSourceH3() throws NamingException {
+		__logger.info("Inside DataSource producer");
+		Context ctx = new InitialContext();
+		return (DataSource) ctx.lookup("java:/comp/env/jdbc/HotelDB1");
 	}
 	
 	public static DataSource getDataSource() throws NamingException {

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import hotel.business.CustomerService;
+import hotel.inj.Logged;
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerDAO;
 import mhotel.model.Customer;
@@ -38,6 +39,7 @@ public class CustomerListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Logged
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Citeste din baza de date un List<Customer>
