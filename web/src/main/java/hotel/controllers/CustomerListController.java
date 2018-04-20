@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import hotel.business.CustomerService;
+import hotel.business.CustomerServiceJPADAO;
 import hotel.inj.Logged;
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerDAO;
@@ -25,7 +26,7 @@ public class CustomerListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private CustomerService mCustomerService;
+	private CustomerServiceJPADAO mCustomerService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()

@@ -1,10 +1,15 @@
 package mhotel.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,6 +30,8 @@ public class Car {
 	@Column(name = "milleage")
 	//@Transient
 	private int mMileage;
+	@OneToMany(mappedBy="mCar", fetch=FetchType.LAZY)
+	private List<TechnicalInspection> mInspections = new ArrayList<>();
 
 	public String getMaker() {
 		return mMaker;
@@ -74,10 +81,11 @@ public class Car {
 		id = pId;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Car [id=" + id + ", mMaker=" + mMaker + ", mModel=" + mModel + ", mYear=" + mYear + ", mColor=" + mColor
-				+ ", mMileage=" + mMileage + "]";
+				+ ", mMileage=" + mMileage + ", mInspections=" + mInspections + "]";
 	}
 
 	@Override
@@ -103,6 +111,14 @@ public class Car {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public List<TechnicalInspection> getInspections() {
+		return mInspections;
+	}
+
+	public void setInspections(List<TechnicalInspection> pInspections) {
+		mInspections = pInspections;
 	}
 
 	
