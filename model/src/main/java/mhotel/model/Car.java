@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="cars",schema="test")
@@ -13,7 +14,7 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name = "car_maker")
+	@Column(name = "car_maker",length=128)
 	private String mMaker;
 	@Column(name = "car_model")
 	private String mModel;
@@ -22,6 +23,7 @@ public class Car {
 	@Column(name = "color")
 	private String mColor;
 	@Column(name = "milleage")
+	//@Transient
 	private int mMileage;
 
 	public String getMaker() {
