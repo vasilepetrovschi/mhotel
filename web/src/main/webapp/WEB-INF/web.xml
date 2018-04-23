@@ -141,6 +141,7 @@
 		<param-value>/rs</param-value>
 	</context-param>
 	<context-param>
+	<!--  RESTEASY + WELD -->
 		<param-name>resteasy.injector.factory</param-name>
 		<param-value>org.jboss.resteasy.cdi.CdiInjectorFactory</param-value>
 	</context-param>

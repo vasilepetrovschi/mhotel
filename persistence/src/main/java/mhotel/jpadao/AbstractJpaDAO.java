@@ -17,6 +17,7 @@ public class AbstractJpaDAO<T extends Serializable> {
 	}
 
 	public T findOne(long id) {
+		// clazz.newInstance();
 		return entityManager.find(clazz, id);
 	}
 

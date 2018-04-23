@@ -15,7 +15,7 @@ public class DatasourceUtils {
 	
 	@ApplicationScoped
 	@Produces
-	@H2DB
+	@H2DB // CDI Qualifier
 	public DataSource getInjectedDataSourceH2() throws NamingException {
 		__logger.info("Inside DataSource producer");
 		Context ctx = new InitialContext();
@@ -33,7 +33,7 @@ public class DatasourceUtils {
 	}
 	
 	public static DataSource getDataSource() throws NamingException {
-		Context ctx = new InitialContext();
+		Context ctx = new InitialContext(); // JNDI
 		return (DataSource) ctx.lookup("java:/comp/env/jdbc/HotelDB");
 	}
 }
