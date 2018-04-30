@@ -9,9 +9,7 @@
 		<artifactId>mhotel</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>curs.bc2018_1</groupId>
 	<artifactId>business</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>business Maven </name>
 	<dependencies>
 		<dependency>
