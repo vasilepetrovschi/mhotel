@@ -3,7 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	version="2.1">
-
 	<persistence-unit name="hotel"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -11,34 +10,19 @@
 		<class>mhotel.model.TechnicalInspection</class>
 		<class>mhotel.model.Address</class>
 		<class>mhotel.model.Customer</class>
-
+		
 		<properties>
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.H2Dialect" />
-			<!-- <non-jta-data-source>jdbc/HotelDB</non-jta-data-source> -->
-			<!-- 
-			<property
-				name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
-			 -->
-			<property
-				name="javax.persistence.schema-generation.scripts.action"
-				value="drop-and-create" />
-			<property
-				name="javax.persistence.schema-generation.scripts.create-target"
-				value="hotelCreate.ddl" />
-			<property
-				name="javax.persistence.schema-generation.scripts.drop-target"
-				value="hotelDrop.ddl" />
+			<!-- <non-jta-data-source>jdbc/HotelDB</non-jta-data-source> --> 
+			
 			<property name="javax.persistence.sql-load-script-source"
 				value="insert.sql" />
 			<property name="javax.persistence.jdbc.driver"
 				value="org.h2.Driver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:D:\\dbeaver\\db\\curs;AUTO_SERVER=TRUE;user=xx;password=xx" />
+				value="jdbc:h2:E:\\dbeaver\\curs;AUTO_SERVER=TRUE;user=vasi;password=vasiledinamo" />
 			<property name="hibernate.show_sql" value="true" />
-
 		</properties>
 	</persistence-unit>
-
 </persistence>
