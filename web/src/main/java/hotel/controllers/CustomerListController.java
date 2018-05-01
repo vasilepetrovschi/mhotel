@@ -1,7 +1,6 @@
 package hotel.controllers;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,13 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-
-import hotel.business.CustomerService;
 import hotel.business.CustomerServiceJPADAO;
 import hotel.inj.Logged;
-import mhotel.DatasourceUtils;
-import mhotel.dao.CustomerDAO;
 import mhotel.model.Customer;
 
 /**

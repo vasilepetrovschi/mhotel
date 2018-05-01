@@ -13,9 +13,7 @@ import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerRecordDAO;
-import mhotel.dao.RoomDAO;
 import mhotel.model.CustomerRecord;
-import mhotel.model.Room;
 
 /**
  * Servlet implementation class HotelCheckoutController

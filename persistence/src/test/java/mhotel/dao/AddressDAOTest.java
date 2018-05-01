@@ -9,7 +9,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import mhotel.DatasourceUtils;
 import mhotel.model.Address;
 
 public class AddressDAOTest {

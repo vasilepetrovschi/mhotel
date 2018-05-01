@@ -13,10 +13,8 @@ import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerRecordDAO;
-import mhotel.dao.HotelDAO;
 import mhotel.dao.RoomDAO;
 import mhotel.model.CustomerRecord;
-import mhotel.model.Hotel;
 import mhotel.model.Room;
 
 /**

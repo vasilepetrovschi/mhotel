@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
-import mhotel.dao.CustomerDAO;
 import mhotel.dao.HotelDAO;
-import mhotel.model.Customer;
 import mhotel.model.Hotel;
 
 /**

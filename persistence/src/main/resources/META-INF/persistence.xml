@@ -16,6 +16,7 @@
 				value="org.hibernate.dialect.H2Dialect" />
 			<!-- <non-jta-data-source>jdbc/HotelDB</non-jta-data-source> --> 
 			
+			
 			<property name="javax.persistence.sql-load-script-source"
 				value="insert.sql" />
 			<property name="javax.persistence.jdbc.driver"

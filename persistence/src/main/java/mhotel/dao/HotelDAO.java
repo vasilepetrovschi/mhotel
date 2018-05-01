@@ -9,7 +9,6 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
-import mhotel.model.Customer;
 import mhotel.model.Hotel;
 import mhotel.model.Room;
 

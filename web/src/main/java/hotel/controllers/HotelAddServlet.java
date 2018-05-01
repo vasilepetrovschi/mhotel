@@ -11,10 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
-import mhotel.dao.CustomerDAO;
 import mhotel.dao.HotelDAO;
 import mhotel.model.Address;
-import mhotel.model.Customer;
 import mhotel.model.Hotel;
 import mhotel.model.Room;
 

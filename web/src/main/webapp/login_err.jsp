@@ -4,18 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Login error</title>
+<style type="text/css">
+input[type=text], input[type=password] {
+	display: block;
+}
+</style>
 </head>
 <body>
-	<h1>Please login</h1>
+	<h1>Try again</h1>
 
 	<p>The information you provided was incorrect, please check the
 		credentials and try again.</p>
 
 	<form action="j_security_check" method="post" name="loginForm">
-		<label for="user">User name:</label> <input id="user" type="text"
-			name="j_username" size="20"> <label for="password">Password
-		</label> <input id="password" type="password" name="j_password" size="20">
+		<label for="user">User name:</label> 
+		<input id="user" type="text" name="j_username" size="20">
+		<label for="password">Password</label> 
+		<input id="password" type="password" name="j_password" size="20">
 
 		<input type="submit" value="Login">
 	</form>

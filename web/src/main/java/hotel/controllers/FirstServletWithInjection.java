@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import hotel.inj.ServiceIntf;
-import mhotel.model.Address;
 
 /**
  * Servlet implementation class FirstServletWithInjection

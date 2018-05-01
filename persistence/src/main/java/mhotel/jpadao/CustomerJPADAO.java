@@ -9,5 +9,6 @@ public class CustomerJPADAO extends AbstractJpaDAO<Customer> {
 	public CustomerJPADAO() {
 		super();
 		setClazz(Customer.class);
+		
 	}
 }

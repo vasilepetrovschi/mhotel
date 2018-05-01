@@ -1,3 +1,4 @@
+<%@page import="mhotel.model.Address"%>
 <%@page import="mhotel.model.Customer"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Customers</title>
 <style>
   .title {
     background-color: #FF0000;
@@ -22,10 +23,12 @@
 	<div>
 		<%
 			List<Customer> customerList = (List<Customer>) request.getAttribute("customers");
+			List<Address> addressList = (List<Address>) request.getAttribute("addresses");
 		%>
-		<B><I>Total clienti : <%=customerList.size()%></I></B> <br> <a
-			href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare
-			client</a>
+		<B><I>Total clienti : <%=customerList.size()%></I></B> <br> 
+		<B><I>Total adrese : <%=addressList.size()%></I></B> <br> 
+		<a
+			href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare client</a>
 		<hr>
 		<H2>Lista clienti hoteluri</H2>
 		<table>

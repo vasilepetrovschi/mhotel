@@ -2,8 +2,6 @@ package hotel.controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +11,6 @@ import javax.sql.DataSource;
 import mhotel.DatasourceUtils;
 import mhotel.dao.HotelDAO;
 import mhotel.dao.RoomDAO;
-import mhotel.model.Address;
 import mhotel.model.Hotel;
 import mhotel.model.Room;
 

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import mhotel.model.Address;
 import mhotel.model.CustomerRecord;
 
 public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {

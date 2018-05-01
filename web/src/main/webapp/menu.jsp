@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
 
@@ -41,6 +41,7 @@
 
 		<a href="hotel/availableRooms">Raport camere libere</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="hotel/unavailableRooms">Raport camere ocupate</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="hotel/urltest">Test</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 	</div>
 </body>

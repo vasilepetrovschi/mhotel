@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import javax.sql.DataSource;
 
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerRecordDAO;
-import mhotel.dao.HotelDAO;
 import mhotel.model.Hotel;
 
 /**
