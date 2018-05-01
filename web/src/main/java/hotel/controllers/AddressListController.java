@@ -43,7 +43,7 @@ public class AddressListController extends HttpServlet {
 
 			List<Address> addressList = mAddressService.getAllAddress();
 
-			RequestDispatcher rd = request.getRequestDispatcher("/customerList.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/addressList.jsp");
 			request.setAttribute("addresses", addressList);
 			rd.forward(request, response);
 		} catch (Exception e) {

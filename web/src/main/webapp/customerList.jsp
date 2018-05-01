@@ -1,4 +1,4 @@
-<%@page import="mhotel.model.Address"%>
+
 <%@page import="mhotel.model.Customer"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,9 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Customers</title>
 <style>
-  .title {
-    background-color: #FF0000;
-  }
+.title {
+	background-color: #FF0000;
+}
 </style>
 </head>
 <body>
@@ -23,17 +23,18 @@
 	<div>
 		<%
 			List<Customer> customerList = (List<Customer>) request.getAttribute("customers");
-			List<Address> addressList = (List<Address>) request.getAttribute("addresses");
 		%>
 		<B><I>Total clienti : <%=customerList.size()%></I></B> <br> 
-		<B><I>Total adrese : <%=addressList.size()%></I></B> <br> 
+		
+		
 		<a
-			href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare client</a>
+			href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare
+			client</a>
 		<hr>
 		<H2>Lista clienti hoteluri</H2>
 		<table>
 			<tr class="title">
-				<th >Nume</th>
+				<th>Nume</th>
 				<th>ID</th>
 				<th>Tara</th>
 				<th>Oras</th>
@@ -41,7 +42,7 @@
 			<%
 				for (Customer customer : customerList) {
 			%>
-			<tr >
+			<tr>
 				<td><%=customer.getName()%></td>
 				<td><%=customer.getLegalIdType() + ":" + customer.getLegalId()%>
 				</td>
@@ -58,5 +59,7 @@
 		</table>
 
 	</div>
+	
+	 <jsp:include page="/addressList.jsp"></jsp:include>
 </body>
 </html>
