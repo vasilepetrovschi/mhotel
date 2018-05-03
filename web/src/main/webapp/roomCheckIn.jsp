@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Check In</title>
 </head>
 <body>
 	<div>
@@ -51,11 +51,9 @@
 			<li><%=room.getHotel().getName()%> : <%=room.getHotel().getAddress().getCity()%>
 				- numar: <%=room.getNumber()%> , etaj: <%=room.getFloor()%>,
 				paturi: <%=room.getNumberOfBeds()%> <br>
-				<form action='<%=request.getContextPath() + "/checkin"%>'
-					method="post">
+				<form action='<%=request.getContextPath() + "/checkin"%>' method="post">
 					<input type="hidden" name="room_id" value="<%=room.getId()%>">
-					<input type="hidden" name="cust_id"
-						value="<%=request.getParameter("customer_id")%>">
+					<input type="hidden" name="cust_id" value="<%=request.getParameter("customer_id")%>">
 
 					<button type="submit">CHECK IN</button>
 				</form></li>

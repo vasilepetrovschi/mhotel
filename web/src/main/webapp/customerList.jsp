@@ -1,4 +1,5 @@
 
+<%@page import="mhotel.model.Address"%>
 <%@page import="mhotel.model.Customer"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,23 +20,22 @@
 		<a href='<%=request.getContextPath() + "/"%>'>HOME</a>
 	</div>
 
-
 	<div>
 		<%
 			List<Customer> customerList = (List<Customer>) request.getAttribute("customers");
+			List<Address> addressList = (List<Address>) request.getAttribute("addresses");
 		%>
 		<B><I>Total clienti : <%=customerList.size()%></I></B> <br> 
+		<B><I>Total adrese : <%=addressList.size()%></I></B> <br> 
 		
-		
-		<a
-			href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare
-			client</a>
+		<a href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare client</a>
 		<hr>
 		<H2>Lista clienti hoteluri</H2>
 		<table>
 			<tr class="title">
-				<th>Nume</th>
 				<th>ID</th>
+				<th>Nume</th>
+				<th>ID Card</th>
 				<th>Tara</th>
 				<th>Oras</th>
 			</tr>
@@ -43,23 +43,20 @@
 				for (Customer customer : customerList) {
 			%>
 			<tr>
+				<td><%=customer.getId()%></td>
 				<td><%=customer.getName()%></td>
 				<td><%=customer.getLegalIdType() + ":" + customer.getLegalId()%>
 				</td>
 				<td><%=customer.getAddress().getCountry()%></td>
 				<td><%=customer.getAddress().getCity()%></td>
 				<td><a
-					href='<%=request.getContextPath() + "/hotel/checkin?customer_id=" + customer.getId()%>'>Check
-						In</a></td>
+					href='<%=request.getContextPath() + "/hotel/checkin?customer_id=" + customer.getId()%>'>Check In</a></td>
 			</tr>
 
 			<%
 				}
 			%>
 		</table>
-
 	</div>
-	
-	 <jsp:include page="/addressList.jsp"></jsp:include>
 </body>
 </html>

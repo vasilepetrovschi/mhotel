@@ -1,5 +1,7 @@
 package hotel.inj;
 
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -10,6 +12,11 @@ public class ServiceImpl1 implements ServiceIntf {
 	public String  doCeva() {
 		return "ServiceImpl1 doceva";
 
+	}
+	
+	public String lista() {
+		
+	return "inca ceva";
 	}
 
 }

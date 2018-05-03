@@ -3,7 +3,6 @@ package hotel.controllers;
 import java.io.IOException;
 import java.util.List;
 
-import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,24 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import hotel.business.AddressServiceJPADAO;
-import hotel.inj.Logged;
 import mhotel.model.Address;
+import mhotel.model.Customer;
 
 /**
- * Servlet implementation class AddressListController
+ * Servlet implementation class AvailableRoomsController
  */
-//@WebServlet("/customer/list")
-public class AddressListController extends HttpServlet {
+//@WebServlet("/availableRooms")
+public class AvailableRoomsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	@Inject
-	private AddressServiceJPADAO mAddressService;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddressListController() {
+    public AvailableRoomsController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,22 +31,22 @@ public class AddressListController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
-    @Logged
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	try {
+		try {
 
-			List<Address> addressList = mAddressService.getAllAddress();
+			//List<Customer> customerList = mCustomerService.getAllCustomers();
+			//List<Address> addressList = mAddressService.getAllAddress();
 
-			RequestDispatcher rd = request.getRequestDispatcher("/addressList.jsp");
-			request.setAttribute("addresses", addressList);
+			RequestDispatcher rd = request.getRequestDispatcher("/availableRooms.jsp");
+		//	request.setAttribute("customers", customerList);
+			//request.setAttribute("addresses", addressList);
 			rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServletException(e);
 		}
+		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
-	
 
 }

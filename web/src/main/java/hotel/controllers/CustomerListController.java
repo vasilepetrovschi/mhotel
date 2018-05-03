@@ -9,8 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import hotel.business.AddressServiceJPADAO;
 import hotel.business.CustomerServiceJPADAO;
 import hotel.inj.Logged;
+import mhotel.model.Address;
 import mhotel.model.Customer;
 
 /**
@@ -21,6 +24,8 @@ public class CustomerListController extends HttpServlet {
 	
 	@Inject
 	private CustomerServiceJPADAO mCustomerService;
+	@Inject
+	private AddressServiceJPADAO mAddressService;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -42,9 +47,11 @@ public class CustomerListController extends HttpServlet {
 		try {
 
 			List<Customer> customerList = mCustomerService.getAllCustomers();
+			List<Address> addressList = mAddressService.getAllAddress();
 
 			RequestDispatcher rd = request.getRequestDispatcher("/customerList.jsp");
 			request.setAttribute("customers", customerList);
+			request.setAttribute("addresses", addressList);
 			rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

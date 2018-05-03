@@ -11,4 +11,10 @@ public class ServiceImpl2 implements ServiceIntf {
 		return "ServiceImpl2 DOALTCFEVA";
 	}
 
+	@Override
+	public String lista() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
