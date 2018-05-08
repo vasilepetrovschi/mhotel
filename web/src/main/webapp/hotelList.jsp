@@ -11,7 +11,7 @@
 </head>
 <body>
 <div>
-  <a href='<%= request.getContextPath() + "/"  %>'>HOME</a>
+  <a href='<%= request.getContextPath()   %>'>HOME</a>
 </div>
    Bine ai venit : <%= request.getUserPrincipal() %><BR>
 

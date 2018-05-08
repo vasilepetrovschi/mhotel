@@ -45,8 +45,8 @@ public class AvailableRoomsController extends HttpServlet {
 			e.printStackTrace();
 			throw new ServletException(e);
 		}
-		
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//this line works only if not exist RequestDispatcher or if RequestDispatcher exist, it work only with the include(request, response) method
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }

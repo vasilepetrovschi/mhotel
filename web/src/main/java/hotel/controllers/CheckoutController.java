@@ -40,7 +40,7 @@ public class CheckoutController extends HttpServlet {
 				connection = ds.getConnection();
 				connection.setAutoCommit(false);
 				CustomerRecordDAO crDAO = new CustomerRecordDAO(connection);
-				crDAO.checkout(custRecordId, new Date());
+				crDAO.checkout(custRecordId);
 				connection.commit();
 			} finally {
 				if (connection != null) {

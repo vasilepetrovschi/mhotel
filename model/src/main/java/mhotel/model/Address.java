@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,16 +21,19 @@ public class Address implements Serializable {
 	@Column(name="ID")
 	private Long mId;// PK
 	@Column(name="STREET")
+	@NotEmpty(message = "Strada cannot be empty")
 	private String mStreet;
 	@Column(name="ADDRESS_NUMBER")
+	@NotEmpty(message = "Numar cannot be empty")
 	private String mNumber;
 	@Column(name="CITY")
+	@NotEmpty(message = "Oras type cannot be empty")
 	private String mCity;
 	@Column(name="COUNTRY")
-
+	@NotEmpty(message = "Tara cannot be empty")
 	private String mCountry;
 	@Column(name="ZIP_CODE")
-
+	@NotEmpty(message = "Cod postal cannot be empty")
 	private String mPostalCode;
 	
 

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 					Statement.RETURN_GENERATED_KEYS);
 			stmt.setLong(1, pValue.getCustomer().getId());
 			stmt.setLong(2, pValue.getRoom().getId());
-			stmt.setDate(3, new java.sql.Date(pValue.getCheckInDate().getTime()));
+			stmt.setTimestamp(3, new java.sql.Timestamp(pValue.getCheckInDate().getTime()));
+			
 
 			int rc = stmt.executeUpdate();
 			if (rc == 1) {
@@ -56,7 +58,7 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 		}
 	}
 
-	public CustomerRecord insert(long pCustomerId, long pRoomId, java.util.Date pCheckInDate) throws SQLException {
+	public CustomerRecord insert(long pCustomerId, long pRoomId) throws SQLException {
 		PreparedStatement stmt = null;
 		try {
 			stmt = mConnection.prepareStatement(
@@ -64,7 +66,7 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 					Statement.RETURN_GENERATED_KEYS);
 			stmt.setLong(1, pCustomerId);
 			stmt.setLong(2, pRoomId);
-			stmt.setDate(3, new java.sql.Date(pCheckInDate.getTime()));
+			stmt.setTimestamp(3, new java.sql.Timestamp(new java.util.Date().getTime()));
 
 			int rc = stmt.executeUpdate();
 			if (rc == 1) {
@@ -96,9 +98,9 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 					"UPDATE HOTEL.CUSTOMER_RECORD SET ROOM_ID=?,CUSTOMER_ID=?,CHECKED_IN=?,CHECKED_OUT=? WHERE ID=?");
 			stmt.setLong(2, pValue.getCustomer().getId());
 			stmt.setLong(1, pValue.getRoom().getId());
-			stmt.setDate(3, new java.sql.Date(pValue.getCheckInDate().getTime()));
+			stmt.setTimestamp(3, new java.sql.Timestamp(pValue.getCheckInDate().getTime()));
 			if (pValue.getCheckOutDate() != null) {
-				stmt.setDate(4, new java.sql.Date(pValue.getCheckOutDate().getTime()));
+				stmt.setTimestamp(4, new java.sql.Timestamp(pValue.getCheckOutDate().getTime()));
 			} else {
 				stmt.setNull(2, Types.DATE);
 			}
@@ -113,11 +115,11 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 		}
 	}
 
-	public void checkout(long pId, Date pCheckoutDate) throws SQLException {
+	public void checkout(long pId) throws SQLException {
 		PreparedStatement stmt = null;
 		try {
 			stmt = mConnection.prepareStatement("UPDATE HOTEL.CUSTOMER_RECORD SET CHECKED_OUT=? WHERE ID=?");
-			stmt.setDate(1, new java.sql.Date(pCheckoutDate.getTime()));
+			stmt.setTimestamp(1, new java.sql.Timestamp(new java.util.Date().getTime()));
 			stmt.setLong(2, pId);
 			int rc = stmt.executeUpdate();
 		} finally {
@@ -150,8 +152,8 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 				cr.setId(rset.getLong(1));
 				cr.setCustomer(mCustomerDAO.loadById(rset.getLong(2)));
 				cr.setRoom(mRoomDAO.loadById(rset.getLong(3)));
-				cr.setCheckInDate(rset.getDate(4));
-				cr.setCheckOutDate(rset.getDate(5));
+				cr.setCheckInDate(rset.getTimestamp(4));
+				cr.setCheckOutDate(rset.getTimestamp(5));
 
 				return cr;
 			} else {
@@ -183,8 +185,8 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 				cr.setId(rset.getLong(1));
 				cr.setCustomer(mCustomerDAO.loadById(rset.getLong(2)));
 				cr.setRoom(mRoomDAO.loadById(rset.getLong(3)));
-				cr.setCheckInDate(rset.getDate(4));
-				cr.setCheckOutDate(rset.getDate(5));
+				cr.setCheckInDate(rset.getTimestamp(4));
+				cr.setCheckOutDate(rset.getTimestamp(5));
 
 				records.add(cr);
 
@@ -214,8 +216,8 @@ public class CustomerRecordDAO implements BaseDAOInterface<CustomerRecord> {
 				cr.setId(rset.getLong(1));
 				cr.setCustomer(mCustomerDAO.loadById(rset.getLong(2)));
 				cr.setRoom(mRoomDAO.loadFullById(rset.getLong(3)));
-				cr.setCheckInDate(rset.getDate(4));
-				cr.setCheckOutDate(rset.getDate(5));
+				cr.setCheckInDate(rset.getTimestamp(4));
+				cr.setCheckOutDate(rset.getTimestamp(5));
 				records.add(cr);
 
 			}

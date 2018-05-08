@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "CUSTOMER", schema = "HOTEL")
@@ -20,16 +22,16 @@ public class Customer implements Serializable {
 	@Column(name = "id")
 	private Long mId; // PK
 	@Column(name = "NAME")
-
+	@NotEmpty(message = "Nume cannot be empty")
 	private String mName;
 	@Column(name = "SEX")
-
+	@NotNull(message = "Sex cannot be null")
 	private String mSex;
 	@Column(name = "LEGAL_ID")
-
+	@NotEmpty(message = "Identity cannot be empty")
 	private String mLegalId; // PassportId,SSN,
 	@Column(name = "LEGAL_ID_TYPE")
-
+	@NotEmpty(message = "Identity Type cannot be empty")
 	private String mLegalIdType; // PASSPORT,DRIVERID,IDENTITY_CARD,etc
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ADDRESS_ID")

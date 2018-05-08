@@ -28,7 +28,7 @@
 		<B><I>Total clienti : <%=customerList.size()%></I></B> <br> 
 		<B><I>Total adrese : <%=addressList.size()%></I></B> <br> 
 		
-		<a href='<%=request.getContextPath() + "/customerAdd.jsp"%>'>Adaugare client</a>
+		<a href='<%=request.getContextPath() + "/customer/add"%>'>Adaugare client</a>
 		<hr>
 		<H2>Lista clienti hoteluri</H2>
 		<table>

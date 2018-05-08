@@ -1,14 +1,16 @@
 package mhotel.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class CustomerRecord implements Serializable {
 	private Long mId; // PK
 	private Customer mCustomer;
 	private Room mRoom;
-	private Date mCheckInDate;
-	private Date mCheckOutDate; // NULL IFF NOT CHECKED OUT
+	private Timestamp mCheckInDate;
+	private Timestamp mCheckOutDate; // NULL IFF NOT CHECKED OUT
+	
 
 	public Long getId() {
 		return mId;
@@ -34,19 +36,19 @@ public class CustomerRecord implements Serializable {
 		mRoom = pRoom;
 	}
 
-	public Date getCheckInDate() {
+	public Timestamp getCheckInDate() {
 		return mCheckInDate;
 	}
 
-	public void setCheckInDate(Date pCheckInDate) {
+	public void setCheckInDate(Timestamp pCheckInDate) {
 		mCheckInDate = pCheckInDate;
 	}
 
-	public Date getCheckOutDate() {
+	public Timestamp getCheckOutDate() {
 		return mCheckOutDate;
 	}
 
-	public void setCheckOutDate(Date pCheckOutDate) {
+	public void setCheckOutDate(Timestamp pCheckOutDate) {
 		mCheckOutDate = pCheckOutDate;
 	}
 

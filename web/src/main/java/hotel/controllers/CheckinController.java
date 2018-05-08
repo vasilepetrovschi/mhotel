@@ -46,7 +46,7 @@ public class CheckinController extends HttpServlet {
 				connection = ds.getConnection();
 				connection.setAutoCommit(false);
 				CustomerRecordDAO crDAO = new CustomerRecordDAO(connection);
-				crDAO.insert(custId, roomId, new Date());
+				crDAO.insert(custId, roomId);
 				connection.commit();
 			} finally {
 				if (connection != null) {
