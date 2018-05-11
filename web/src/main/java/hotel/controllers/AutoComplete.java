@@ -18,7 +18,7 @@ import org.json.JSONArray;
 /**
  * Servlet implementation class AutoComplete
  */
-@WebServlet("/Auto")
+//@WebServlet("/Auto")
 public class AutoComplete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

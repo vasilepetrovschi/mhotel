@@ -78,28 +78,8 @@ public class CustomerAddServlet extends HttpServlet {
 
 		ArrayList<String> errors = new ArrayList<String>();
 		
-		List<String> list = new ArrayList<String>();
-		try {
-			BufferedReader bufferreader = new BufferedReader(
-					new FileReader("E:\\Workspace\\Vasi\\src\\spanzuratoareaV2\\countries.txt"));
-			String line = bufferreader.readLine();
-
-			while (line != null) {
-				list.add(line);
-				line = bufferreader.readLine();
-			}
-
-		} catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
-
-		JSONArray json = new JSONArray(list);
-		response.setContentType("application/json");
-		response.getWriter().print(json);
-
-		try {
+		
+			try {
 			DataSource ds = DatasourceUtils.getDataSource();
 			Connection connection = null;
 			try {
@@ -152,4 +132,4 @@ public class CustomerAddServlet extends HttpServlet {
 
 }
 
-// }
+

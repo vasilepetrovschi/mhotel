@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
-  <welcome-file-list>
-    <welcome-file>NewFile.jsp</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <servlet-name>Auto</servlet-name>
-    <servlet-class>com.autocomplete.sample.AutoComplete</servlet-class>
-  </servlet>
-  <servlet-mapping>
-     <servlet-name>Auto</servlet-name>
-     <url-pattern>/Auto</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
     <display-name>CustomerListController</display-name>
@@ -113,6 +102,8 @@
     <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
   <security-role>
+  <role-name>manager_hotel</role-name>
+  <role-name>receptioner</role-name>
     <role-name>xxxxx</role-name>
   </security-role>
   <security-constraint>
