@@ -3,6 +3,7 @@ package hotel.controllers;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ import javax.validation.ValidatorFactory;
 
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import org.json.JSONArray;
+import org.json.JSONObject;
+
 import hotel.inj.Logged;
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerDAO;
@@ -37,6 +40,9 @@ public class CustomerAddServlet extends HttpServlet {
 	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	Validator validator = factory.getValidator();
 
+	
+
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -69,6 +75,7 @@ public class CustomerAddServlet extends HttpServlet {
 		String sex = request.getParameter("sex");
 		String id = request.getParameter("id");
 		String idType = request.getParameter("idType");
+		String birthday = request.getParameter("bday");
 
 		String addCountry = request.getParameter("addr_country");
 		String addCity = request.getParameter("addr_city");
@@ -90,6 +97,7 @@ public class CustomerAddServlet extends HttpServlet {
 				customer.setSex(sex);
 				customer.setLegalId(id);
 				customer.setLegalIdType(idType);
+				customer.setBirthday(birthday);
 
 				Address addr = new Address();
 				addr.setCity(addCity);

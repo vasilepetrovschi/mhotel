@@ -38,6 +38,7 @@
 				<th>ID Card</th>
 				<th>Tara</th>
 				<th>Oras</th>
+				<th>Zi de nastere</th>
 			</tr>
 			<%
 				for (Customer customer : customerList) {
@@ -49,8 +50,9 @@
 				</td>
 				<td><%=customer.getAddress().getCountry()%></td>
 				<td><%=customer.getAddress().getCity()%></td>
-				<td><a
-					href='<%=request.getContextPath() + "/hotel/checkin?customer_id=" + customer.getId()%>'>Check In</a></td>
+				<td><%=customer.getBirthday()%></td>
+				<td><a href='<%=request.getContextPath() + "/hotel/checkin?customer_id=" + customer.getId()%>'>Check In</a></td>
+				<td><a href='<%=request.getContextPath() + "/customer/update?customer_id=" + customer.getId()%>'>Edit client</a></td>	
 			</tr>
 
 			<%

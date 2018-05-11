@@ -41,7 +41,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 			}
 
 			stmt = mConnection.prepareStatement(
-					"INSERT INTO HOTEL.CUSTOMER(NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE,ADDRESS_ID) VALUES(?,?,?,?,?)",
+					"INSERT INTO HOTEL.CUSTOMER(NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE,ADDRESS_ID,BIRTHDAY) VALUES(?,?,?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			if (pValue.getName() != null) {
 				// if(pValue.getSTreet().length() > 64 ) //
@@ -65,6 +65,11 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 				stmt.setNull(4, Types.VARCHAR);
 			}
 			stmt.setLong(5, address_id);
+			if (pValue.getBirthday() != null) {
+				stmt.setString(6, pValue.getBirthday());
+			} else {
+				stmt.setNull(6, Types.VARCHAR);
+			}
 			int rc = stmt.executeUpdate();
 			if (rc == 1) {
 				ResultSet rset = stmt.getGeneratedKeys();
@@ -93,7 +98,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 		try {
 			mAddrDAO.update(pValue.getAddress());
 			stmt = mConnection
-					.prepareStatement("UPDATE HOTEL.CUSTOMER SET NAME=?,SEX=?,LEGAL_ID=?,LEGAL_ID_TYPE=? WHERE ID=?");
+					.prepareStatement("UPDATE HOTEL.CUSTOMER SET NAME=?,SEX=?,LEGAL_ID=?,LEGAL_ID_TYPE=?,BIRTHDAY=? WHERE ID=?");
 			if (pValue.getName() != null) {
 				// if(pValue.getSTreet().length() > 64 ) //
 				stmt.setString(1, pValue.getName());
@@ -115,8 +120,13 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 			} else {
 				stmt.setNull(4, Types.VARCHAR);
 			}
-
-			stmt.setLong(5, pValue.getId());
+			if (pValue.getBirthday() != null) {
+				stmt.setString(5, pValue.getBirthday());
+			} else {
+				stmt.setNull(5, Types.VARCHAR);
+			}
+			
+			stmt.setLong(6, pValue.getId());
 			int rc = stmt.executeUpdate();
 			return loadById(pValue.getId());
 		} finally {
@@ -132,7 +142,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 		ResultSet rset = null;
 			try {
 			stmt = mConnection.prepareStatement(
-					"SELECT ID,NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE, ADDRESS_ID FROM  HOTEL.CUSTOMER ");
+					"SELECT ID,NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE, ADDRESS_ID, BIRTHDAY FROM  HOTEL.CUSTOMER ");
 			rset = stmt.executeQuery();
 			List<Customer> result = new ArrayList<>();
 			while (rset.next()) {
@@ -143,6 +153,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 				cust.setLegalId(rset.getString(4));
 				cust.setLegalIdType(rset.getString(5));
 				cust.setAddress(mAddrDAO.loadById(rset.getLong(6)));
+				cust.setBirthday(rset.getString(7));
 				result.add(cust);
 			
 			}
@@ -166,7 +177,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 		}
 		try {
 			stmt = mConnection.prepareStatement(
-					"SELECT ID,NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE, ADDRESS_ID FROM  HOTEL.CUSTOMER WHERE ID=?");
+					"SELECT ID,NAME,SEX,LEGAL_ID,LEGAL_ID_TYPE, ADDRESS_ID,BIRTHDAY FROM  HOTEL.CUSTOMER WHERE ID=?");
 			stmt.setLong(1, pId);
 			rset = stmt.executeQuery();
 			if (rset.next()) {
@@ -177,6 +188,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 				cust.setLegalId(rset.getString(4));
 				cust.setLegalIdType(rset.getString(5));
 				cust.setAddress(mAddrDAO.loadById(rset.getLong(6)));
+				cust.setBirthday(rset.getString(5));
 				return cust;
 			} else {
 				return null;

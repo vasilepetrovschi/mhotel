@@ -102,8 +102,6 @@
     <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
   <security-role>
-  <role-name>manager_hotel</role-name>
-  <role-name>receptioner</role-name>
     <role-name>xxxxx</role-name>
   </security-role>
   <security-constraint>

@@ -135,68 +135,26 @@ source: countries
 			<%=error %><br>
   <% } %>
 
-<label for="ajax">Pick an HTML Element (options loaded using AJAX)</label>
-  <input type="text" id="ajax" list="json-datalist" placeholder="e.g. datalist">
-  <datalist id="json-datalist"></datalist>
-  
-  <script>
-//Get the <datalist> and <input> elements.
-  var dataList = document.getElementById('json-datalist');
-  var input = document.getElementById('ajax');
-
-  // Create a new XMLHttpRequest.
-  var request = new XMLHttpRequest();
-
-  // Handle state changes for the request.
-  request.onreadystatechange = function(response) {
-    if (request.readyState === 4) {
-      if (request.status === 200) {
-        // Parse the JSON
-        var jsonOptions = JSON.parse(request.responseText);
-    
-        // Loop over the JSON array.
-        jsonOptions.forEach(function(item) {
-          // Create a new <option> element.
-          var option = document.createElement('option');
-          // Set the value using the item in the JSON array.
-          option.value = item;
-          // Add the <option> element to the <datalist>.
-          dataList.appendChild(option);
-        });
-        
-        // Update the placeholder text.
-        input.placeholder = "e.g. datalist";
-      } else {
-        // An error occured :(
-        input.placeholder = "Couldn't load datalist options :(";
-      }
-    }
-  };
-
-  // Update the placeholder text.
-  input.placeholder = "Loading options...";
-
-  // Set up and make the request.
-  request.open('GET', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/html-elements.json', true);
-  request.send();
-  
-  </script>
     <form autocomplete="off" action="<%=request.getContextPath() %>/customer/add" method="post">
     
-      <b>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the name" placeholder = "EX: Jhon" onfocusout="this.placeholder='EX: Jhon'"
-  	  onfocus="this.placeholder=''" type="text" name="nume" required="required"
+      <b>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the name"
+      			placeholder = "EX: Jhon" onfocusout="this.placeholder='EX: Jhon'"
+  	  			onfocus="this.placeholder=''" type="text" name="nume" required="required"
  				oninvalid="this.setCustomValidity('Please enter valid name')"
  				oninput="setCustomValidity('')" ></input><br>
-      <b>Sex:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> <input type="radio" name="sex" value="M"> Male
-  					<input type="radio" name="sex" value="F"> Female<br>
-  	  <b>Identity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the identity" placeholder = "EX: IF 456123" onfocusout="this.placeholder='EX: IF 456123'"
+      <b>Sex:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+				<input type="radio" name="sex" value="M"> Male
+  				<input type="radio" name="sex" value="F"> Female<br>
+  	  <b>Identity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the identity" 
+  	  			placeholder = "EX: IF 456123" onfocusout="this.placeholder='EX: IF 456123'"
   	  			onfocus="this.placeholder=''" type="text" name="id"><br>
   	  <b>Identity Type: </b><input title= "Insert the identity type" placeholder="EX: CI" onfocusout="this.placeholder='EX: CI'"
   	 			onfocus="this.placeholder=''" type="text" name="idType"><br>
   	  <b>Birthday:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the birthday" type="date" name="bday"><br>
   	  <b>Address</b><br>
   	  <div class="autocomplete" >
-  	  <b>Country:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input style="width:200px;" id="countriesList" title= "Insert the country" placeholder = "EX: Romania" onfocusout="this.placeholder='EX: Romania'"
+  	  <b>Country:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input style="width:200px;" id="countriesList" 
+  	  			title= "Insert the country" placeholder = "EX: Romania" onfocusout="this.placeholder='EX: Romania'"
   	  			onfocus="this.placeholder=''" type="text" name="addr_country" required="required"
   	  			oninvalid="this.setCustomValidity('Please enter valid country')"
  				oninput="setCustomValidity('')" id="autocomplete"></input><br>
