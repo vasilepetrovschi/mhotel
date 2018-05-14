@@ -77,7 +77,7 @@ public class AddressDAO implements BaseDAOInterface<Address> {
 	public Address update(Address pValue) throws SQLException {
 		PreparedStatement stmt = null;
 		if(pValue.getId() == null) {
-			throw new RuntimeException("Object must NOT have null ID for update");
+			throw new RuntimeException("Object must NOT have null ID for update address");
 		}
 		try {
 			stmt = mConnection.prepareStatement(

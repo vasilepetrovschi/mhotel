@@ -188,7 +188,7 @@ public class CustomerDAO implements BaseDAOInterface<Customer> {
 				cust.setLegalId(rset.getString(4));
 				cust.setLegalIdType(rset.getString(5));
 				cust.setAddress(mAddrDAO.loadById(rset.getLong(6)));
-				cust.setBirthday(rset.getString(5));
+				cust.setBirthday(rset.getString(7));
 				return cust;
 			} else {
 				return null;
