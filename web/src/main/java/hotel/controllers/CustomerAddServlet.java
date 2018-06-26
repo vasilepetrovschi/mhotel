@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,9 +26,11 @@ import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonArrayFormatVisitor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import hotel.business.CustomerServiceJPADAO;
 import hotel.inj.Logged;
 import mhotel.DatasourceUtils;
 import mhotel.dao.CustomerDAO;
+import mhotel.jpadao.CustomerJPADAO;
 import mhotel.model.Address;
 import mhotel.model.Customer;
 
@@ -40,9 +43,9 @@ public class CustomerAddServlet extends HttpServlet {
 	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 	Validator validator = factory.getValidator();
 
-	
+//	@Inject
+//	private CustomerServiceJPADAO mCustomerService;
 
-	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -84,9 +87,8 @@ public class CustomerAddServlet extends HttpServlet {
 		String addCP = request.getParameter("addr_cp");
 
 		ArrayList<String> errors = new ArrayList<String>();
-		
-		
-			try {
+
+		try {
 			DataSource ds = DatasourceUtils.getDataSource();
 			Connection connection = null;
 			try {
@@ -123,6 +125,7 @@ public class CustomerAddServlet extends HttpServlet {
 				} else {
 					CustomerDAO customerDAO = new CustomerDAO(connection);
 					customerDAO.insert(customer);
+//					mCustomerService.addCustomer(customer);
 					connection.commit();
 					response.sendRedirect(request.getContextPath() + "/customer/list");
 				}
@@ -139,5 +142,3 @@ public class CustomerAddServlet extends HttpServlet {
 	}
 
 }
-
-
