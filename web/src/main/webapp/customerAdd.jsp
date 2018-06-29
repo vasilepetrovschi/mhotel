@@ -19,7 +19,7 @@ body {
 
 /* Full-width input fields */
 input[type=text], input[type=date] {
-    width: 15%;
+    width: 200px;
     padding: 5px;
     margin: 2px 0 5px 0;
     border: inset;
@@ -34,15 +34,15 @@ input[type=text]:focus, input[type=date]:focus {
 /* Set a style for the submit button */
 .registerbtn {
     background-color: #A4A4A4;
-    color: black;
-    padding: 5px;
-    margin: 8px 0;
-    border: solid;
-    cursor: pointer;
-    width: 10%;
-    opacity: 0.7;
-    position: relative;
-    left: 150px;
+	color: black;
+	padding: 5px;
+	margin: 8px 4px;
+	border: solid;
+	cursor: pointer;
+	width: 100px;
+	opacity: 0.7;
+	position: relative;
+	left: 105px;
 }
 .registerbtn:hover {
     opacity: 5;
@@ -126,6 +126,9 @@ source: countries
 
 <body>
 
+	<div>
+		<a href='<%=request.getContextPath() + "/"%>'>HOME</a>
+	</div>
   <div >
   	  <% ArrayList<String> errors = (ArrayList<String>)request.getAttribute("errors"); %>
   	 
@@ -168,6 +171,7 @@ source: countries
   	  <b>Zip code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><input title= "Insert the zip code" placeholder = "EX: 123456" onfocusout="this.placeholder='EX: 123456'"
   	 			onfocus="this.placeholder=''" type="text" name="addr_cp"><br>
   	  <button type="submit" class="registerbtn">  <b>Salveaza</b></button>
+  	  <button type="button" class="registerbtn" onclick="history.back();"> <b>Cancel</b> </button>
     </form>
     
     <script>

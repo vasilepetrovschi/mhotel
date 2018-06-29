@@ -38,7 +38,7 @@ public class AvailableRoomsController extends HttpServlet {
 			//List<Address> addressList = mAddressService.getAllAddress();
 
 			RequestDispatcher rd = request.getRequestDispatcher("/availableRooms.jsp");
-		//	request.setAttribute("customers", customerList);
+			//request.setAttribute("customers", customerList);
 			//request.setAttribute("addresses", addressList);
 			rd.forward(request, response);
 		} catch (Exception e) {
@@ -46,7 +46,7 @@ public class AvailableRoomsController extends HttpServlet {
 			throw new ServletException(e);
 		}
 		//this line works only if not exist RequestDispatcher or if RequestDispatcher exist, it work only with the include(request, response) method
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 }
